@@ -1,0 +1,39 @@
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'kotlin'
+
+buildscript {
+	ext {
+		kotlin_version = '1.1.51'
+		kotlintest_version = '2.0.7'
+		junit_version = '4.11'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+	}
+}
+
+
+defaultTasks 'run'
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+	compile "org.jetbrains.kotlin:kotlin-runtime:$kotlin_version"
+
+	testCompile "junit:junit:$junit_version"
+	testCompile "io.kotlintest:kotlintest:$kotlintest_version"
+}
+
+
+task wrapper(type: Wrapper) {
+	gradleVersion = "4.1"
+}
