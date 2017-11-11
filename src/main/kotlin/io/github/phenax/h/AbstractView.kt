@@ -1,6 +1,6 @@
 package io.github.phenax.h
 
-import io.github.phenax.h.dom.*
+import io.github.phenax.h.node.*
 
 /**
  * View
@@ -23,7 +23,7 @@ abstract class AbstractView {
 	}
 
 	// Mount a custom component
-	fun h(component: AbstractComponent): DOMNode = component.render()
+	fun h(component: HComponent): DOMNode = component.render()
 
 	// Text node shorthand
 	fun text(text: String): DOMNode = TextNode(text)

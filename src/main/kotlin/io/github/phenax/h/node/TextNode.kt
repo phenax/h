@@ -1,4 +1,4 @@
-package io.github.phenax.h.dom
+package io.github.phenax.h.node
 
 /**
  * DOM node for rendering strings

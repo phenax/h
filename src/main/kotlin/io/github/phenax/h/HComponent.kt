@@ -1,14 +1,14 @@
 package io.github.phenax.h
 
-import io.github.phenax.h.dom.*
+import io.github.phenax.h.node.*
 
 /**
  * Component
  */
-abstract class AbstractComponent: AbstractView() {
+abstract class HComponent: AbstractView() {
 
 	// Layout to wrap the component (view.layout.EmptyLayout for no wrapper)
-	abstract val layout: AbstractLayout
+	abstract val layout: HLayout
 
 	override protected fun _render(): DOMNode {
 
