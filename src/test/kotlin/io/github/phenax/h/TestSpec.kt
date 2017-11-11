@@ -31,9 +31,9 @@ class TestSpec : ShouldSpec() {
 			}
 
 			/*should("eat my dick") {
-				forAll({ a: String ->
+				forAll(200) { a: String ->
 					true
-				})
+				}
 			}*/
 		}
 	}
