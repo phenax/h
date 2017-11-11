@@ -89,6 +89,14 @@ class HComponentSpec: MySpec() {
 
 				component.renderToHtml() shouldBe expectedHtml
 			}
+
+			should("render paragraph tag with unsafe text") {
+				val text = "<h1>Hello world</h1>"
+				val component = createComponent { it.p(null, listOf( it.unsafeText(text) )) }
+				val expectedHtml = "<p>$text</p>"
+
+				component.renderToHtml() shouldBe expectedHtml
+			}
 		}
 	}
 
