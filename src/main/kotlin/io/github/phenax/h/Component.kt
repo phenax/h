@@ -5,10 +5,10 @@ import io.github.phenax.h.node.*
 /**
  * Component
  */
-abstract class HComponent: AbstractView() {
+abstract class Component: AbstractView() {
 
 	// Layout to wrap the component (view.layout.EmptyLayout for no wrapper)
-	abstract val layout: HLayout
+	abstract val layout: Layout
 
 	override protected fun _render(): DOMNode {
 

@@ -1,12 +1,12 @@
 package io.github.phenax.h.layouts
 
-import io.github.phenax.h.HLayout
-import io.github.phenax.h.HComponent
+import io.github.phenax.h.Layout
+import io.github.phenax.h.Component
 import io.github.phenax.h.node.DOMNode
 
-class EmptyLayout: HLayout() {
+class EmptyLayout: Layout() {
 
-	override fun render(component: HComponent): DOMNode {
+	override fun render(component: Component): DOMNode {
 		return h(component);
 	}
 }

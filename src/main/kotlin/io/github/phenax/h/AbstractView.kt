@@ -23,7 +23,7 @@ abstract class AbstractView {
 	}
 
 	// Mount a custom component
-	fun h(component: HComponent): DOMNode = component.render()
+	fun h(component: Component): DOMNode = component.render()
 
 	// Text node shorthand
 	fun text(text: String): DOMNode = TextNode(text)
