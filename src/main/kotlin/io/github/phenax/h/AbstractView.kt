@@ -1,6 +1,7 @@
 package io.github.phenax.h
 
 import io.github.phenax.h.node.*
+import org.apache.commons.lang3.StringEscapeUtils
 
 /**
  * View
@@ -26,7 +27,10 @@ abstract class AbstractView {
 	fun h(component: HComponent): DOMNode = component.render()
 
 	// Text node shorthand
-	fun text(text: String): DOMNode = TextNode(text)
+	fun text(text: String): DOMNode = TextNode(StringEscapeUtils.escapeHtml4(text))
+
+	// Unsafe Text node shorthand
+	fun unsafeText(text: String): DOMNode = TextNode(text)
 
 	// File node shorthand
 	fun file(text: String, loadOnCreate: Boolean): DOMNode = FileNode(text, loadOnCreate)
@@ -43,6 +47,7 @@ abstract class AbstractView {
 	fun h5(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("h5", props, children)
 	fun h6(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("h6", props, children)
 	fun p(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("p", props, children)
+	fun p(props: Map<String, String>?, content: String): DOMNode = h("p", props, listOf( text(content) ))
 	fun script(src: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {
 		val mutableProps = props.toMutableMap()
 		mutableProps.put("src", src)

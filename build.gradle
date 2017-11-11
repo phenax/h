@@ -33,6 +33,7 @@ repositories {
 dependencies {
 	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 	compile "org.jetbrains.kotlin:kotlin-runtime:$kotlin_version"
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
 	testCompile "io.kotlintest:kotlintest:$kotlintest_version"
 }

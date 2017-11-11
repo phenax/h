@@ -74,6 +74,21 @@ class HComponentSpec: MySpec() {
 
 				component.renderToHtml() shouldBe expectedHtml
 			}
+
+			should("render paragraph tag with text") {
+				val text = "Hello world"
+				val component = createComponent { it.p(null, text) }
+				val expectedHtml = "<p>$text</p>"
+
+				component.renderToHtml() shouldBe expectedHtml
+			}
+
+			should("escape html string passed as text") {
+				val component = createComponent { it.p(null, "<h1>Hello world</h1>") }
+				val expectedHtml = "<p>&lt;h1&gt;Hello world&lt;/h1&gt;</p>"
+
+				component.renderToHtml() shouldBe expectedHtml
+			}
 		}
 	}
 
