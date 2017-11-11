@@ -1,7 +1,6 @@
 package io.github.phenax.h
 
 import io.github.phenax.h.node.*
-import org.apache.commons.lang3.StringEscapeUtils
 
 /**
  * View
@@ -27,10 +26,10 @@ abstract class AbstractView {
 	fun h(component: HComponent): DOMNode = component.render()
 
 	// Text node shorthand
-	fun text(text: String): DOMNode = TextNode(StringEscapeUtils.escapeHtml4(text))
+	fun text(text: String): DOMNode = TextNode(text)
 
 	// Unsafe Text node shorthand
-	fun unsafeText(text: String): DOMNode = TextNode(text)
+	fun unsafeText(text: String): DOMNode = TextNode(text, false)
 
 	// File node shorthand
 	fun file(text: String, loadOnCreate: Boolean): DOMNode = FileNode(text, loadOnCreate)
