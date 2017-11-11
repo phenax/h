@@ -17,6 +17,7 @@ buildscript {
 	}
 }
 
+group = "io.github.phenax"
 
 defaultTasks 'run'
 
@@ -29,8 +30,12 @@ dependencies {
 	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 	compile "org.jetbrains.kotlin:kotlin-runtime:$kotlin_version"
 
-	testCompile "junit:junit:$junit_version"
+	// testCompile "junit:junit:$junit_version"
 	testCompile "io.kotlintest:kotlintest:$kotlintest_version"
+}
+
+test {
+	testLogging.showStandardStreams = true
 }
 
 
