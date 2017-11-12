@@ -10,7 +10,6 @@ public class MainClass {
 		String html = component.renderToHtml();
 
 		System.out.println(html);
-		System.out.println(html);
 	}
 }
 
