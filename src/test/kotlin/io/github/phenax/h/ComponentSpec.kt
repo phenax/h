@@ -7,7 +7,7 @@ import io.kotlintest.*
 import io.github.phenax.h.node.DOMNode
 import io.github.phenax.h.helpers.MyComponent
 
-class HComponentSpec: MySpec() {
+class ComponentSpec: MySpec() {
 
 	init {
 		"Component" {
