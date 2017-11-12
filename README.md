@@ -1,5 +1,5 @@
 # h
-Html templating library for kotlin. Inspired by the whole vdom scene in javascript.
+Html templating library for kotlin.
 
 ### Instructions
 * Build it yourself my dude and get the jar. (Gonna add a release jar soon and ).
