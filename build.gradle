@@ -1,7 +1,8 @@
 
 apply plugin: 'java'
-apply plugin: 'application'
 apply plugin: 'kotlin'
+
+version = '0.1.0'
 
 buildscript {
 	ext {
@@ -42,13 +43,24 @@ dependencies {
 // Documentation generator configuration
 apply plugin: 'org.jetbrains.dokka'
 dokka {
-    outputFormat = 'html' 
-    outputDirectory = "build/javadoc"
+	outputFormat = 'html' 
+	outputDirectory = "build/javadoc"
 }
 
 // KotlinTest configuration
 test {
 	testLogging.showStandardStreams = true
+}
+
+jar {
+	manifest {
+		attributes(
+			'Implementation-Title': project.name,
+			'Implementation-Version': project.version
+		)
+	}
+
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 
