@@ -18,7 +18,7 @@ repositories {
     jcenter()
 }
 
-mainClassName = 'javaexample.Main'
+mainClassName = 'javaexample.MainClass'
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
