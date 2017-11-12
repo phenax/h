@@ -2,7 +2,9 @@
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
-version = '0.1.0'
+// H version
+version = '0.0.0'
+group = "io.github.phenax"
 
 buildscript {
 	ext {
@@ -22,9 +24,7 @@ buildscript {
 	}
 }
 
-group = "io.github.phenax"
-
-defaultTasks 'run'
+defaultTasks 'test'
 
 repositories {
 	mavenCentral()
