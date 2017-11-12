@@ -52,17 +52,34 @@ abstract class AbstractView {
 	fun h6(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("h6", props, children)
 	fun p(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("p", props, children)
 	fun p(props: Map<String, String>?, content: String): DOMNode = h("p", props, listOf( text(content) ))
+
+
+	/**
+	 * Render external stylesheet html
+	 */
 	fun style(href: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {
 		val mutableProps = props.toMutableMap()
 		mutableProps.put("href", href)
 		return h("link", mutableProps, null, false)
 	}
-	fun style(props: Map<String, String>?, cssString: String): DOMNode {
-		return h("style", props, listOf( unsafeText(cssString) ))
-	}
+	/**
+	 * Inline style
+	 */
+	fun style(props: Map<String, String>?, cssString: String): DOMNode =
+		h("style", props, listOf( unsafeText(cssString) ))
+
+	/**
+	 * External script
+	 */
 	fun script(src: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {
 		val mutableProps = props.toMutableMap()
 		mutableProps.put("src", src)
 		return h("script", mutableProps, null)
 	}
+
+	/**
+	 * Inline script
+	 */
+	fun script(props: Map<String, String>?, jsString: String): DOMNode =
+		h("script", props, listOf( unsafeText(jsString) ))
 }

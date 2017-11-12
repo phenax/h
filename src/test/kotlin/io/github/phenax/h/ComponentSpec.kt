@@ -98,6 +98,25 @@ class ComponentSpec: MySpec() {
 
 				component.renderToHtml() shouldBe expectedHtml
 			}
+
+			should("render link tag and style tag") {
+				val component =
+					createComponent {
+						it.div(null, listOf(
+							it.style("/css/style.css"),
+							it.style(null, "html, body { margin: 0; }")
+						))
+					}
+
+				val expectedHtml = """
+					|<div>
+						|<link href="/css/style.css" />
+						| <style>html, body { margin: 0; }</style>
+					|</div>
+				""".trimMargin().replace("\n", "")
+
+				component.renderToHtml() shouldBe expectedHtml
+			}
 		}
 	}
 
