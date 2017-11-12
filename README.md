@@ -2,6 +2,7 @@
 Html templating library for kotlin.
 
 ### Instructions
+* Test it with `./gradlew test`. Test report -> `build/reports/tests/test`.
 * Build it yourself my dude and get the jar. (Gonna add a release jar soon and ).
 * Use it in your project and rock
 
@@ -59,8 +60,13 @@ class HtmlLayout(val title: String = "Moosic"): Layout() {
       html(null, listOf(
         head(null, listOf(
           h("title", null, listOf( text(title) ) ),
+          style("/css/style.css"),                               // External stylesheet
+          style(null, "html, body { background-color: red; }")   // Inline style
         )),
-        body(null, listOf( h(component) ))
+        body(null, listOf(
+          div(null, h(component)),
+          script("/js/script.js", mapOf( "defer" to "defer", "async" to "async" ))
+        ))
       ))
     )
   }
