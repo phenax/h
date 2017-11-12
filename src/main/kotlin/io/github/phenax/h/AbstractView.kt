@@ -18,8 +18,13 @@ abstract class AbstractView {
 
 
 	// Html node shorthand
-	fun h(nodeName: String, props: Map<String, String>?, children: List<DOMNode>?): DOMNode {
-		return HtmlNode(nodeName, props, children)
+	fun h(
+		nodeName: String,
+		props: Map<String, String>?,
+		children: List<DOMNode>?,
+		isClosingTagRequired: Boolean = true
+	): DOMNode {
+		return HtmlNode(nodeName, props, children, isClosingTagRequired)
 	}
 
 	// Mount a custom component
@@ -47,6 +52,14 @@ abstract class AbstractView {
 	fun h6(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("h6", props, children)
 	fun p(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("p", props, children)
 	fun p(props: Map<String, String>?, content: String): DOMNode = h("p", props, listOf( text(content) ))
+	fun style(href: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {
+		val mutableProps = props.toMutableMap()
+		mutableProps.put("href", href)
+		return h("link", mutableProps, null, false)
+	}
+	fun style(props: Map<String, String>?, cssString: String): DOMNode {
+		return h("style", props, listOf( unsafeText(cssString) ))
+	}
 	fun script(src: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {
 		val mutableProps = props.toMutableMap()
 		mutableProps.put("src", src)

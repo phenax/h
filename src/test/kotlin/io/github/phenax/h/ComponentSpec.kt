@@ -10,6 +10,7 @@ import io.github.phenax.h.helpers.MyComponent
 class ComponentSpec: MySpec() {
 
 	init {
+
 		"Component" {
 
 			should("render text node") {
