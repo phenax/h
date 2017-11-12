@@ -1,8 +1,10 @@
 # h
+[![Build Status](https://circleci.com/gh/phenax/h.svg?style=shield&circle-token=4d17eafbc842c9e17f2efa731cc89d44fe5a8d73)](https://circleci.com/gh/phenax/h)
+
 Html templating library for kotlin.
 
 ### Instructions
-* Test it with `./gradlew test`. Test report -> `build/reports/tests/test`.
+* Test it with `./gradlew test`. Generated test report -> `build/reports/tests/test`.
 * Build it yourself my dude and get the jar. (Gonna add a release jar soon and ).
 * Use it in your project and rock
 
