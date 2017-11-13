@@ -38,6 +38,11 @@ dependencies {
 	testCompile "io.kotlintest:kotlintest:$kotlintest_version"
 }
 
+// Minimum jvmTarget of 1.8 needed since Kotlin 1.1
+compileKotlin {
+    kotlinOptions.jvmTarget= 1.8
+}
+
 // KotlinTest configuration
 test {
 	testLogging.showStandardStreams = true
