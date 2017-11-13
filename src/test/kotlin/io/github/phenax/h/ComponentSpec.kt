@@ -119,8 +119,4 @@ class ComponentSpec: MySpec() {
 			}
 		}
 	}
-
-	private fun createComponent(_getRenderNode: (d: MyComponent) -> DOMNode): MyComponent {
-		return MyComponent(_getRenderNode)
-	}
 }

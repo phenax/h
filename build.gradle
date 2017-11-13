@@ -20,7 +20,6 @@ buildscript {
 
 	dependencies {
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-		classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
 	}
 }
 
@@ -37,14 +36,6 @@ dependencies {
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
 	testCompile "io.kotlintest:kotlintest:$kotlintest_version"
-}
-
-
-// Documentation generator configuration
-apply plugin: 'org.jetbrains.dokka'
-dokka {
-	outputFormat = 'html' 
-	outputDirectory = "build/javadoc"
 }
 
 // KotlinTest configuration
