@@ -5,7 +5,7 @@ Html templating library for kotlin.
 
 ### Instructions
 * Test it with `./gradlew test`. Generated test report -> `build/reports/tests/test`.
-* Build it yourself my dude and get the jar. (Gonna add a release jar soon and ).
+* Build it yourself my dude and get the jar. (Gonna add a release jar soon and publish it to maven).
 * Use it in your project and rock
 
 
