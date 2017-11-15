@@ -10,7 +10,7 @@ import io.github.phenax.h.helpers.MyComponent
 import io.github.phenax.h.helpers.MyLayout
 
 
-open class MySpec(
+abstract class MySpec(
 	private val testCaseInterceptor: (TestCaseContext, () -> Unit) -> Unit = { _, test -> test() }
 ): ShouldSpec() {
 

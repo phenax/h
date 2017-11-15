@@ -82,4 +82,18 @@ abstract class AbstractView {
 	 */
 	fun script(props: Map<String, String>?, jsString: String): DOMNode =
 		h("script", props, listOf( unsafeText(jsString) ))
+
+
+
+
+	fun loop(startIndex: Int, endIndex: Int, callback: (i: Int) -> DOMNode): List<DOMNode> {
+
+		val list = mutableListOf<DOMNode>()
+
+		for(i in startIndex..endIndex) {
+			list.add(callback(i))
+		}
+
+		return list
+	}
 }

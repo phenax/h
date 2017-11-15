@@ -118,5 +118,25 @@ class ComponentSpec: MySpec() {
 				component.renderToHtml() shouldBe expectedHtml
 			}
 		}
+
+
+
+		"Helper loops" {
+
+			should("render an array of items") {
+
+				val component =
+					createComponent { c ->
+						c.div(null, c.loop(2, 6) { i ->
+							c.p(null, "$i")
+						})
+					}
+
+				val expectedHtml =
+					"""<div><p>2</p> <p>3</p> <p>4</p> <p>5</p> <p>6</p></div>"""
+
+				component.renderToHtml() shouldBe expectedHtml
+			}
+		}
 	}
 }
