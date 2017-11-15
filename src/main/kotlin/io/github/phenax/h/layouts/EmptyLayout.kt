@@ -6,7 +6,7 @@ import io.github.phenax.h.node.DOMNode
 
 class EmptyLayout: Layout() {
 
-	override fun render(component: Component): DOMNode {
-		return h(component);
+	override fun render(comp: Component): DOMNode {
+		return h(comp);
 	}
 }

@@ -22,15 +22,15 @@ open class MySpec(
 
 	override val oneInstancePerTest = true
 
-	protected fun createComponent(_getRenderNode: (d: MyComponent) -> DOMNode): MyComponent {
+	protected fun createComponent(_getRenderNode: (MyComponent) -> DOMNode): MyComponent {
 		return MyComponent(_getRenderNode)
 	}
 
-	protected fun createComponent(layout: Layout, _getRenderNode: (d: MyComponent) -> DOMNode): MyComponent {
+	protected fun createComponent(layout: Layout, _getRenderNode: (MyComponent) -> DOMNode): MyComponent {
 		return MyComponent(_getRenderNode, layout)
 	}
 
-    protected fun createLayout(_getRenderNode: (d: MyLayout, c: Component) -> DOMNode): MyLayout {
+    protected fun createLayout(_getRenderNode: (MyLayout) -> (Component) -> DOMNode): MyLayout {
 		return MyLayout(_getRenderNode)
 	}
 }

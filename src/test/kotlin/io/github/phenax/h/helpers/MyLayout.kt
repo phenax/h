@@ -5,10 +5,10 @@ import io.github.phenax.h.Layout
 import io.github.phenax.h.node.DOMNode
 
 class MyLayout(
-	val _getRenderNode: (d: MyLayout, c: Component) -> DOMNode
+	private val _getRenderNode: (MyLayout) -> (Component) -> DOMNode
 ): Layout() {
 	// Render node
-	override fun render(c: Component): DOMNode {
-		return _getRenderNode(this, c)
+	override fun render(comp: Component): DOMNode {
+		return (_getRenderNode(this))(comp)
 	}
 }
