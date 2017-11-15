@@ -11,7 +11,7 @@ class ComponentSpec: MySpec() {
 
 	init {
 
-		"Component" {
+		"Node rendering" {
 
 			should("render text node") {
 
@@ -121,19 +121,73 @@ class ComponentSpec: MySpec() {
 
 
 
-		"Helper loops" {
+		"Loops and conditionals" {
 
-			should("render an array of items") {
+			should("Conditionals test") {
+
+				var isThisVariableTrue = true;
 
 				val component =
 					createComponent { c ->
-						c.div(null, c.loop(2, 6) { i ->
-							c.p(null, "$i")
-						})
+						c.div(null, listOf(
+							if(isThisVariableTrue) {
+								c.text("Yep")
+							} else {
+								c.text("Nope")
+							}
+						))
 					}
 
-				val expectedHtml =
-					"""<div><p>2</p> <p>3</p> <p>4</p> <p>5</p> <p>6</p></div>"""
+				isThisVariableTrue = true;
+				component.renderToHtml() shouldBe "<div>Yep</div>"
+
+				isThisVariableTrue = false;
+				component.renderToHtml() shouldBe "<div>Nope</div>"
+			}
+
+			should("render numbers from 2 to 6") {
+
+				val component =
+					createComponent { c ->
+						c.div(null, (2..6).map { c.text("$it") })
+					}
+
+				val expectedHtml = """<div>2 3 4 5 6</div>"""
+
+				component.renderToHtml() shouldBe expectedHtml
+			}
+
+			should("render list of bands") {
+
+				val listOfBands = listOf(
+					mapOf( "name" to "Avenged Sevenfold" ),
+					mapOf( "name" to "Trivium" ),
+					mapOf( "name" to "Foo Fighters" ),
+					mapOf( "name" to "Suicide Silence" ),
+					mapOf( "name" to "Dragonforce" ),
+					mapOf( "name" to "Bullet for my valentine" ),
+					mapOf( "name" to "FALLOUTBOY" )
+				)
+
+				val component =
+					createComponent { c ->
+						c.div(null,
+							listOfBands
+								.filter { "${it["name"]}" != "FALLOUTBOY" }
+								.map { c.p(null, "${it["name"]}") }
+						)
+					}
+
+				val expectedHtml = """
+					|<div>
+						|<p>Avenged Sevenfold</p>
+						| <p>Trivium</p>
+						| <p>Foo Fighters</p>
+						| <p>Suicide Silence</p>
+						| <p>Dragonforce</p>
+						| <p>Bullet for my valentine</p>
+					|</div>
+				""".trimMargin().replace("\n", "")
 
 				component.renderToHtml() shouldBe expectedHtml
 			}
