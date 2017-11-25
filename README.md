@@ -3,15 +3,17 @@
 
 Html templating library for kotlin.
 
-### Instructions
-* Test it with `./gradlew test`. Generated test report -> `build/reports/tests/test`.
-* Build it yourself my dude and get the jar. (Gonna add a release jar soon and publish it to maven).
-* Use it in your project and rock
-
 
 ### Get started
+
+##### Download
+* Download  the latest release jar. ([Download link](https://github.com/phenax/h/releases/latest))
+* Clone the repo for the source code `git clone https://github.com/phenax/h`.
+* Test it with `./gradlew test`. Generated test report -> `build/reports/tests/test`.
+
+##### Examples
 Simple component examples in `/examples`
-(Gonna make an api reference website and stuff but for now, this is all you got)
+
 
 ##### Create a component
 
