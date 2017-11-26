@@ -76,3 +76,36 @@ class HtmlLayout(val title: String = "Moosic"): Layout() {
   }
 }
 ```
+
+
+#### Use components inside other components
+```kotlin
+class UserCard(user: User): Component() {
+  override val layout = EmptyLayout()
+  override fun render(): DOMNode {
+    return div(null, listOf(
+      div(null, listOf( text(user.name) )),
+      div(null, listOf( text('@' + user.nickname) )),
+    ))
+  }
+}
+
+class UserListComponent(usersList: List<User>): Component() {
+  override val layout = EmptyLayout()
+  override fun render(): DOMNode {
+    return div(null,
+      usersList.map { user ->
+        div(null, listOf( h(UserCardComponent(user)) ))
+      }
+    )
+  }
+}
+```
+
+
+#### Render to html string
+```kotlin
+val component = MyComponent()
+println(component.renderToHtml())
+```
+
