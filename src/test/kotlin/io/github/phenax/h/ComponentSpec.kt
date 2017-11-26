@@ -11,19 +11,21 @@ class ComponentSpec: MySpec() {
 
 	init {
 
+
+
 		"Node rendering" {
 
 			should("render text node") {
 
 				val text = "Hello world"
-				val comp = component { it.text(text) }
+				val comp = component { text(text) }
 
 				comp.renderToHtml() shouldBe text
 			}
 
 			should("render empty div") {
 
-				val comp = component { it.div(null, null) }
+				val comp = component { div(null, null) }
 
 				comp.renderToHtml() shouldBe "<div></div>"
 			}
@@ -31,7 +33,7 @@ class ComponentSpec: MySpec() {
 			should("render empty div with attributes") {
 
 				val comp = component {
-					it.div(
+					div(
 						mapOf(
 							"class" to "this-div",
 							"a" to "b",
@@ -50,16 +52,16 @@ class ComponentSpec: MySpec() {
 			should("render empty div with children") {
 
 				val comp = component {
-					it.div(
+					div(
 						mapOf( "class" to "card" ),
 						listOf(
-							it.h1(
+							h1(
 								mapOf( "class" to "card--title" ),
-								listOf( it.text("Card title") )
+								listOf( text("Card title") )
 							),
-							it.p(
+							p(
 								mapOf( "class" to "card--description" ),
-								listOf( it.text("Card description") )
+								listOf( text("Card description") )
 							)
 						)
 					)
@@ -78,14 +80,14 @@ class ComponentSpec: MySpec() {
 
 			should("render paragraph tag with text") {
 				val text = "Hello world"
-				val comp = component { it.p(null, text) }
+				val comp = component { p(null, text) }
 				val expectedHtml = "<p>$text</p>"
 
 				comp.renderToHtml() shouldBe expectedHtml
 			}
 
 			should("escape html string passed as text") {
-				val comp = component { it.p(null, "<h1>Hello world</h1>") }
+				val comp = component { p(null, "<h1>Hello world</h1>") }
 				val expectedHtml = "<p>&lt;h1&gt;Hello world&lt;/h1&gt;</p>"
 
 				comp.renderToHtml() shouldBe expectedHtml
@@ -93,7 +95,7 @@ class ComponentSpec: MySpec() {
 
 			should("render paragraph tag with unsafe text") {
 				val text = "<h1>Hello world</h1>"
-				val comp = component { it.p(null, listOf( it.unsafeText(text) )) }
+				val comp = component { p(null, listOf( unsafeText(text) )) }
 				val expectedHtml = "<p>$text</p>"
 
 				comp.renderToHtml() shouldBe expectedHtml
@@ -102,9 +104,9 @@ class ComponentSpec: MySpec() {
 			should("render link tag and style tag") {
 				val component =
 					component {
-						it.div(null, listOf(
-							it.style("/css/style.css"),
-							it.style(null, "html, body { margin: 0; }")
+						div(null, listOf(
+							style("/css/style.css"),
+							style(null, "html, body { margin: 0; }")
 						))
 					}
 
@@ -121,6 +123,10 @@ class ComponentSpec: MySpec() {
 
 
 
+
+
+
+
 		"Loops and conditionals" {
 
 			should("Conditionals test") {
@@ -128,12 +134,12 @@ class ComponentSpec: MySpec() {
 				var isThisVariableTrue = true;
 
 				val comp =
-					component { c ->
-						c.div(null, listOf(
+					component {
+						div(null, listOf(
 							if(isThisVariableTrue) {
-								c.text("Yep")
+								text("Yep")
 							} else {
-								c.text("Nope")
+								text("Nope")
 							}
 						))
 					}
@@ -148,13 +154,9 @@ class ComponentSpec: MySpec() {
 			should("render numbers from 2 to 6") {
 
 				val comp =
-					component { c ->
-						c.div(null, (2..6).map { c.text("$it") })
-					}
+					component { div(null, (2..6).map { text("$it") }) }
 
-				val expectedHtml = """<div>2 3 4 5 6</div>"""
-
-				comp.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe """<div>2 3 4 5 6</div>"""
 			}
 
 			should("render list of bands") {
@@ -170,11 +172,11 @@ class ComponentSpec: MySpec() {
 				)
 
 				val comp =
-					component { c ->
-						c.div(null,
+					component {
+						div(null,
 							listOfBands
 								.filter { "${it["name"]}" != "FALLOUTBOY" }
-								.map { c.p(null, "${it["name"]}") }
+								.map { p(null, "${it["name"]}") }
 						)
 					}
 

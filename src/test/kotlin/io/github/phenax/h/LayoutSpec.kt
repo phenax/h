@@ -21,11 +21,11 @@ class LayoutSpec: MySpec() {
 					l.div(mapOf( "id" to "wrapper" ), listOf( l.h(c) ))
 				} }
 
-				val component = createComponent(layout) { c ->
-					c.div(null, listOf( c.text("Hello") ))
+				val comp = component(layout) {
+					div(null, listOf( text("Hello") ))
 				}
 
-				component.renderToHtml() shouldBe """<div id="wrapper"><div>Hello</div></div>"""
+				comp.renderToHtml() shouldBe """<div id="wrapper"><div>Hello</div></div>"""
 			}
 		}
 	}
