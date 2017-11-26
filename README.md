@@ -1,5 +1,7 @@
 # h
 [![Build Status](https://circleci.com/gh/phenax/h.svg?style=shield&circle-token=4d17eafbc842c9e17f2efa731cc89d44fe5a8d73)](https://circleci.com/gh/phenax/h)
+[![release](http://github-release-version.herokuapp.com/github/phenax/h/release.svg?style=flat)](https://github.com/phenax/h/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Html templating library for kotlin.
 
