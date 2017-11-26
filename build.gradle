@@ -44,6 +44,13 @@ compileKotlin {
     kotlinOptions.jvmTarget= 1.8
 }
 
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		csv.enabled false
+	}
+}
+
 // KotlinTest configuration
 test {
 	testLogging.showStandardStreams = true

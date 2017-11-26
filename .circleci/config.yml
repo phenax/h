@@ -45,5 +45,5 @@ jobs:
       - run: gradle jacocoTestReport
 
       # Code coverage upload
-      - run: bash <(curl -s https://codecov.io/bash)
+      - run: bash <(curl -s https://codecov.io/bash) -t 94c88146-b8a5-4fb4-a212-91a7a0617894
 
