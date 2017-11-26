@@ -91,7 +91,7 @@ class HtmlLayout(val title: String = "Moosic"): Layout() {
 
 #### Use components inside other components
 ```kotlin
-class UserCard(user: User): Component() {
+class UserCardComponent(user: User): Component() {
   override val layout = EmptyLayout()
   override fun render(): DOMNode {
     return div(null, listOf(
