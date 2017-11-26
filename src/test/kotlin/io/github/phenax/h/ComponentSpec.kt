@@ -16,21 +16,21 @@ class ComponentSpec: MySpec() {
 			should("render text node") {
 
 				val text = "Hello world"
-				val component = createComponent { it.text(text) }
+				val comp = component { it.text(text) }
 
-				component.renderToHtml() shouldBe text
+				comp.renderToHtml() shouldBe text
 			}
 
 			should("render empty div") {
 
-				val component = createComponent { it.div(null, null) }
+				val comp = component { it.div(null, null) }
 
-				component.renderToHtml() shouldBe "<div></div>"
+				comp.renderToHtml() shouldBe "<div></div>"
 			}
 
 			should("render empty div with attributes") {
 
-				val component = createComponent {
+				val comp = component {
 					it.div(
 						mapOf(
 							"class" to "this-div",
@@ -44,12 +44,12 @@ class ComponentSpec: MySpec() {
 				val expectedHtml =
 					"""<div class="this-div" a="b" data-hello="world"></div>"""
 
-				component.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe expectedHtml
 			}
 
 			should("render empty div with children") {
 
-				val component = createComponent {
+				val comp = component {
 					it.div(
 						mapOf( "class" to "card" ),
 						listOf(
@@ -73,35 +73,35 @@ class ComponentSpec: MySpec() {
 						|</div>
 					""".trimMargin().replace("\n", "")
 
-				component.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe expectedHtml
 			}
 
 			should("render paragraph tag with text") {
 				val text = "Hello world"
-				val component = createComponent { it.p(null, text) }
+				val comp = component { it.p(null, text) }
 				val expectedHtml = "<p>$text</p>"
 
-				component.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe expectedHtml
 			}
 
 			should("escape html string passed as text") {
-				val component = createComponent { it.p(null, "<h1>Hello world</h1>") }
+				val comp = component { it.p(null, "<h1>Hello world</h1>") }
 				val expectedHtml = "<p>&lt;h1&gt;Hello world&lt;/h1&gt;</p>"
 
-				component.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe expectedHtml
 			}
 
 			should("render paragraph tag with unsafe text") {
 				val text = "<h1>Hello world</h1>"
-				val component = createComponent { it.p(null, listOf( it.unsafeText(text) )) }
+				val comp = component { it.p(null, listOf( it.unsafeText(text) )) }
 				val expectedHtml = "<p>$text</p>"
 
-				component.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe expectedHtml
 			}
 
 			should("render link tag and style tag") {
 				val component =
-					createComponent {
+					component {
 						it.div(null, listOf(
 							it.style("/css/style.css"),
 							it.style(null, "html, body { margin: 0; }")
@@ -127,8 +127,8 @@ class ComponentSpec: MySpec() {
 
 				var isThisVariableTrue = true;
 
-				val component =
-					createComponent { c ->
+				val comp =
+					component { c ->
 						c.div(null, listOf(
 							if(isThisVariableTrue) {
 								c.text("Yep")
@@ -139,22 +139,22 @@ class ComponentSpec: MySpec() {
 					}
 
 				isThisVariableTrue = true;
-				component.renderToHtml() shouldBe "<div>Yep</div>"
+				comp.renderToHtml() shouldBe "<div>Yep</div>"
 
 				isThisVariableTrue = false;
-				component.renderToHtml() shouldBe "<div>Nope</div>"
+				comp.renderToHtml() shouldBe "<div>Nope</div>"
 			}
 
 			should("render numbers from 2 to 6") {
 
-				val component =
-					createComponent { c ->
+				val comp =
+					component { c ->
 						c.div(null, (2..6).map { c.text("$it") })
 					}
 
 				val expectedHtml = """<div>2 3 4 5 6</div>"""
 
-				component.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe expectedHtml
 			}
 
 			should("render list of bands") {
@@ -169,8 +169,8 @@ class ComponentSpec: MySpec() {
 					mapOf( "name" to "FALLOUTBOY" )
 				)
 
-				val component =
-					createComponent { c ->
+				val comp =
+					component { c ->
 						c.div(null,
 							listOfBands
 								.filter { "${it["name"]}" != "FALLOUTBOY" }
@@ -189,7 +189,7 @@ class ComponentSpec: MySpec() {
 					|</div>
 				""".trimMargin().replace("\n", "")
 
-				component.renderToHtml() shouldBe expectedHtml
+				comp.renderToHtml() shouldBe expectedHtml
 			}
 		}
 	}

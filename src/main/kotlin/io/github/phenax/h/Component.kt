@@ -1,6 +1,6 @@
 package io.github.phenax.h
 
-import io.github.phenax.h.node.*
+import io.github.phenax.h.node.DOMNode
 
 /**
  * Component
