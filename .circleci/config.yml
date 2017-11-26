@@ -41,6 +41,9 @@ jobs:
       # run tests!
       - run: gradle test
 
+      # generate test coverage report
+      - run: gradle jacocoTestReport
+
       # Code coverage upload
       - run: bash <(curl -s https://codecov.io/bash)
 
