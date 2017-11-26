@@ -23,7 +23,7 @@ import io.github.phenax.h.Layout
 import io.github.phenax.h.node.DOMNode
 import io.github.phenax.h.layouts.EmptyLayout
 
-class MyComponent: Component() {
+class CardComponent(val myTitle: String): Component() {
 
   // Layout(EmptyLayout is no wrapper. You can use a custom layout)
   override val layout = EmptyLayout()
@@ -32,24 +32,35 @@ class MyComponent: Component() {
   // <div class="card">
   //   <h1 class="card--title">Card title</h1>
   //   <p class="card--description">Card description</p>
-  //   <p class="card--description">Card description</p>
   // </div>
   override fun render(): DOMNode {
     return div( mapOf( "class" to "card" ),
       listOf(
-        h1( mapOf( "class" to "card--title" ),
-          listOf( text("Card title") )
-        ),
-        p( mapOf( "class" to "card--description" ),
-          listOf( text("Card description") )
-        ),
-        p( mapOf( "class" to "card--description" ),
-          "Card description"
-        )
+        h1( mapOf( "class" to "card--title" ), myTitle),
+        p( mapOf( "class" to "card--description" ), "Card description" )
       )
     )
   }
 }
+
+val helloWorldCard = CardComponent("Hello world")
+```
+
+OR
+
+```kotlin
+import io.github.phenax.h.*
+
+fun createCard(myTitle: String) = component {
+  div( mapOf( "class" to "card" ),
+    listOf(
+      h1( mapOf( "class" to "card--title" ), myTitle),
+      p( mapOf( "class" to "card--description" ), "Card description")
+    )
+  )
+}
+
+val helloWorldCard = createCard("Hello world")
 ```
 
 #### Create a layout
@@ -105,7 +116,7 @@ class UserListComponent(usersList: List<User>): Component() {
 
 #### Render to html string
 ```kotlin
-val component = MyComponent()
+val component = CardComponent()
 println(component.renderToHtml())
 ```
 
