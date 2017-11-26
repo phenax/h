@@ -1,7 +1,8 @@
 # h
-[![Build Status](https://circleci.com/gh/phenax/h.svg?style=shield&circle-token=4d17eafbc842c9e17f2efa731cc89d44fe5a8d73)](https://circleci.com/gh/phenax/h)
-[![release](http://github-release-version.herokuapp.com/github/phenax/h/release.svg?style=flat)](https://github.com/phenax/h/releases/latest)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build Status](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg?style=for-the-badge)](https://circleci.com/gh/phenax/h)
+[![Codecov branch](https://img.shields.io/codecov/c/github/phenax/h/master.svg?style=for-the-badge)](https://codecov.io/gh/phenax/h)
+[![release](http://github-release-version.herokuapp.com/github/phenax/h/release.svg?style=for-the-badge)](https://github.com/phenax/h/releases/latest)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
 Html templating library for kotlin.
 
