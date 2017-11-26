@@ -16,13 +16,7 @@ class AnonymousComponent(
 }
 
 // Empty layout component
-fun component(cb: AnonymousComponent.() -> DOMNode): AnonymousComponent {
-	val comp = AnonymousComponent(cb)
-	return comp
-}
+fun component(cb: AnonymousComponent.() -> DOMNode) = AnonymousComponent(cb)
 
-// Fixed layout component
-fun component(layout: Layout, cb: AnonymousComponent.() -> DOMNode): AnonymousComponent {
-	val comp = AnonymousComponent(cb, layout)
-	return comp
-}
+// Custom layout component
+fun component(layout: Layout, cb: AnonymousComponent.() -> DOMNode) = AnonymousComponent(cb, layout)

@@ -5,7 +5,6 @@ import io.kotlintest.properties.*
 import io.kotlintest.*
 
 import io.github.phenax.h.node.DOMNode
-import io.github.phenax.h.helpers.MyComponent
 
 class ComponentSpec: MySpec() {
 

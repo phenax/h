@@ -39,7 +39,12 @@ abstract class AbstractView {
 	// File node shorthand
 	fun file(text: String, loadOnCreate: Boolean): DOMNode = FileNode(text, loadOnCreate)
 
-	// Html element shorthands
+
+
+
+
+	/* Node creation shorthands */
+
 	fun html(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("html", props, children)
 	fun body(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("body", props, children)
 	fun head(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("head", props, children)
@@ -51,35 +56,34 @@ abstract class AbstractView {
 	fun h5(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("h5", props, children)
 	fun h6(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("h6", props, children)
 	fun p(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("p", props, children)
-	fun p(props: Map<String, String>?, content: String): DOMNode = h("p", props, listOf( text(content) ))
 
+	/* ## Common case shorthands ## */
 
-	/**
-	 * Render external stylesheet html
-	 */
+	fun h1(props: Map<String, String>?, content: String): DOMNode = h1(props, listOf( text(content) ))
+	fun h2(props: Map<String, String>?, content: String): DOMNode = h2(props, listOf( text(content) ))
+	fun h3(props: Map<String, String>?, content: String): DOMNode = h3(props, listOf( text(content) ))
+	fun h4(props: Map<String, String>?, content: String): DOMNode = h4(props, listOf( text(content) ))
+	fun h5(props: Map<String, String>?, content: String): DOMNode = h5(props, listOf( text(content) ))
+	fun h6(props: Map<String, String>?, content: String): DOMNode = h6(props, listOf( text(content) ))
+	fun p(props: Map<String, String>?, content: String): DOMNode = p(props, listOf( text(content) ))
+
+	// Render external stylesheet (link tag)
 	fun style(href: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {
 		val mutableProps = props.toMutableMap()
 		mutableProps.put("href", href)
 		return h("link", mutableProps, null, false)
 	}
-	/**
-	 * Inline style
-	 */
+	// Inline style (style tag)
 	fun style(props: Map<String, String>?, cssString: String): DOMNode =
 		h("style", props, listOf( unsafeText(cssString) ))
 
-	/**
-	 * External script
-	 */
+	// External script
 	fun script(src: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {
 		val mutableProps = props.toMutableMap()
 		mutableProps.put("src", src)
 		return h("script", mutableProps, null)
 	}
-
-	/**
-	 * Inline script
-	 */
+	// Inline script
 	fun script(props: Map<String, String>?, jsString: String): DOMNode =
 		h("script", props, listOf( unsafeText(jsString) ))
 }
