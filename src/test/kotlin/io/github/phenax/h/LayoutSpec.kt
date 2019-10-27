@@ -1,13 +1,6 @@
 package io.github.phenax.h
 
-import io.kotlintest.matchers.*
-import io.kotlintest.properties.*
-import io.kotlintest.*
-
-import io.github.phenax.h.Component
-import io.github.phenax.h.node.DOMNode
-import io.github.phenax.h.helpers.MyLayout
-import io.github.phenax.h.layouts.EmptyLayout
+import io.kotlintest.matchers.shouldBe
 
 class LayoutSpec: MySpec() {
 

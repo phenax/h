@@ -10,7 +10,7 @@ abstract class AbstractView {
 	// Renders the dom node that is returned
 	abstract fun render(): DOMNode
 
-	open protected fun _render(): DOMNode = render()
+	protected open fun _render(): DOMNode = render()
 
 	// Render to node and html methods
 	fun renderToNode(): DOMNode = _render()
@@ -19,22 +19,32 @@ abstract class AbstractView {
 
 	// Html node shorthand
 	fun h(
-		nodeName: String,
-		props: Map<String, String>?,
-		children: List<DOMNode>?,
-		isClosingTagRequired: Boolean = true
+            nodeName: String,
+            props: Map<String, String>?,
+            children: List<DOMNode>?,
+            isClosingTagRequired: Boolean = true
 	): DOMNode {
 		return HtmlNode(nodeName, props, children, isClosingTagRequired)
+	}
+
+	// Inline html node shorthand
+	fun ih(
+			nodeName: String,
+			props: Map<String, String>?,
+			children: List<InlineDOMNode>?,
+			isClosingTagRequired: Boolean = true
+	): InlineDOMNode {
+		return InlineHtmlNode(nodeName, props, children, isClosingTagRequired)
 	}
 
 	// Mount a custom component
 	fun h(component: Component): DOMNode = component.render()
 
 	// Text node shorthand
-	fun text(text: String): DOMNode = TextNode(text)
+	fun text(text: String): InlineDOMNode = TextNode(text)
 
 	// Unsafe Text node shorthand
-	fun unsafeText(text: String): DOMNode = TextNode(text, false)
+	fun unsafeText(text: String): InlineDOMNode = TextNode(text, false)
 
 	// File node shorthand
 	fun file(text: String, loadOnCreate: Boolean): DOMNode = FileNode(text, loadOnCreate)
@@ -43,7 +53,7 @@ abstract class AbstractView {
 
 
 
-	/* Node creation shorthands */
+	/* Block node creation shorthands */
 
 	fun html(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("html", props, children)
 	fun body(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("body", props, children)
@@ -57,6 +67,12 @@ abstract class AbstractView {
 	fun h6(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("h6", props, children)
 	fun p(props: Map<String, String>?, children: List<DOMNode>?): DOMNode = h("p", props, children)
 
+	/* Inline node creation shorthands */
+
+	fun a(props: Map<String, String>?, children: List<InlineDOMNode>?): InlineDOMNode = ih("a", props, children)
+	fun em(props: Map<String, String>?, children: List<InlineDOMNode>?): InlineDOMNode = ih("em", props, children)
+	fun strong(props: Map<String, String>?, children: List<InlineDOMNode>?): InlineDOMNode = ih("strong", props, children)
+
 	/* ## Common case shorthands ## */
 
 	fun h1(props: Map<String, String>?, content: String): DOMNode = h1(props, listOf( text(content) ))
@@ -66,6 +82,12 @@ abstract class AbstractView {
 	fun h5(props: Map<String, String>?, content: String): DOMNode = h5(props, listOf( text(content) ))
 	fun h6(props: Map<String, String>?, content: String): DOMNode = h6(props, listOf( text(content) ))
 	fun p(props: Map<String, String>?, content: String): DOMNode = p(props, listOf( text(content) ))
+
+	fun a(props: Map<String, String>?, content: String): InlineDOMNode = a(props, listOf( text(content) ))
+	fun em(props: Map<String, String>?, content: String): InlineDOMNode = em(props, listOf( text(content) ))
+	fun em(content: String): InlineDOMNode = em(null, content)
+	fun strong(props: Map<String, String>?, content: String): InlineDOMNode = strong(props, listOf( text(content) ))
+	fun strong(content: String): InlineDOMNode = strong(null, content)
 
 	// Render external stylesheet (link tag)
 	fun style(href: String, props: Map<String, String> = mapOf<String, String>()): DOMNode {

@@ -1,12 +1,10 @@
 package io.github.phenax.h
 
-import io.kotlintest.specs.ShouldSpec
-import io.kotlintest.*
-
-import io.github.phenax.h.Component
-import io.github.phenax.h.Layout
-import io.github.phenax.h.node.DOMNode
 import io.github.phenax.h.helpers.MyLayout
+import io.github.phenax.h.node.DOMNode
+import io.kotlintest.TestCaseConfig
+import io.kotlintest.TestCaseContext
+import io.kotlintest.specs.ShouldSpec
 
 
 abstract class MySpec(

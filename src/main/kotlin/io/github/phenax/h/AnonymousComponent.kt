@@ -1,12 +1,12 @@
 package io.github.phenax.h
 
-import io.github.phenax.h.node.DOMNode
 import io.github.phenax.h.layouts.EmptyLayout
+import io.github.phenax.h.node.DOMNode
 
 // Anonymous component
 class AnonymousComponent(
-	val _getRenderNode: (d: AnonymousComponent) -> DOMNode,
-	override val layout: Layout = EmptyLayout()
+        val _getRenderNode: (d: AnonymousComponent) -> DOMNode,
+        override val layout: Layout = EmptyLayout()
 ): Component() {
 
 	// Render node

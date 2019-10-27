@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringEscapeUtils
  * 
  * @param text  The string to render
  */
-class TextNode(val text: String, val isSafe: Boolean = true): DOMNode() {
+class TextNode(val text: String, val isSafe: Boolean = true): AbstractDOMNode(), InlineDOMNode {
 
 	override fun toHtml(): String {
 
