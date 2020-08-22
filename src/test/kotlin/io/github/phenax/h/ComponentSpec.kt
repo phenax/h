@@ -1,10 +1,6 @@
 package io.github.phenax.h
 
-import io.kotlintest.matchers.*
-import io.kotlintest.properties.*
-import io.kotlintest.*
-
-import io.github.phenax.h.node.DOMNode
+import io.kotlintest.matchers.shouldBe
 
 class ComponentSpec: MySpec() {
 
@@ -60,7 +56,7 @@ class ComponentSpec: MySpec() {
 							),
 							p(
 								mapOf( "class" to "card--description" ),
-								listOf( text("Card description") )
+								listOf( text("Card description"), em("with emphasis") )
 							)
 						)
 					)
@@ -70,7 +66,7 @@ class ComponentSpec: MySpec() {
 					"""
 						|<div class="card">
 							|<h1 class="card--title">Card title</h1>
-							| <p class="card--description">Card description</p>
+							| <p class="card--description">Card description <em>with emphasis</em></p>
 						|</div>
 					""".trimMargin().replace("\n", "")
 

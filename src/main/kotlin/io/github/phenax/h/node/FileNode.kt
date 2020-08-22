@@ -8,7 +8,7 @@ import java.io.File
  * @param filePath        Path to the file to read
  * @param loadOnCreate    If true, loads the file into memory when initiated
  */
-class FileNode(val filePath: String, val loadOnCreate: Boolean): DOMNode() {
+class FileNode(val filePath: String, val loadOnCreate: Boolean): AbstractDOMNode() {
 
 	// Loaded file contents
 	private val _fileContents = if(loadOnCreate) _readFile() else ""
